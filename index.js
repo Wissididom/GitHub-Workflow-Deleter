@@ -1,7 +1,7 @@
 import "dotenv/config";
 // https://docs.github.com/en/rest/actions/workflow-runs?apiVersion=2022-11-28#list-workflow-runs-for-a-repository
 let runs = await fetch(
-  `https://api.github.com/repos/${process.env.OWNER}/${process.env.REPO}/actions/runs?per_page=100`,
+  `https://api.github.com/repos/${process.env.OWNER}/${process.env.REPO}/actions/runs`,
   {
     method: "GET",
     headers: {
