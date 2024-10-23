@@ -1,4 +1,6 @@
 name: Deno Build
+permissions:
+  "contents": "write"
 
 on:
   push:
