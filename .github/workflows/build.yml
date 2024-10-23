@@ -30,7 +30,7 @@ jobs:
         if: startsWith(matrix.os, 'windows')
         uses: actions/upload-artifact@v4
         with:
-          name: GitHub-Workflow-Deleter-${{ matrix.os }}.exe
+          name: GitHub-Workflow-Deleter-${{ matrix.os }}
           path: GitHub-Workflow-Deleter.exe
       - name: Upload artifact (Ubuntu and Mac)
         if: startsWith(matrix.os, 'ubuntu') || startsWith(matrix.os, 'macos')
