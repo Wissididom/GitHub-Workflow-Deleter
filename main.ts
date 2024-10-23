@@ -1,7 +1,7 @@
 import type { WorkflowRuns } from "./workflow-runs.ts";
 
 // https://docs.github.com/en/rest/actions/workflow-runs?apiVersion=2022-11-28#list-workflow-runs-for-a-repository
-const runs = await fetch(
+const runs: WorkflowRuns = await fetch(
   `https://api.github.com/repos/${Deno.env.get("OWNER")}/${
     Deno.env.get("REPO")
   }/actions/runs`,
@@ -17,7 +17,7 @@ const runs = await fetch(
 console.log(`Total Count: ${runs.total_count}`);
 for (const run of runs.workflow_runs) {
   // https://docs.github.com/en/rest/actions/workflow-runs?apiVersion=2022-11-28#delete-a-workflow-run
-  const delResult = await fetch(
+  const delResult: Response = await fetch(
     `https://api.github.com/repos/${Deno.env.get("OWNER")}/${
       Deno.env.get("REPO")
     }/actions/runs/${run.id}`,
