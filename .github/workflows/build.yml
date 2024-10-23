@@ -38,3 +38,48 @@ jobs:
         with:
           name: GitHub-Workflow-Deleter-${{ matrix.os }}
           path: GitHub-Workflow-Deleter
+  create-release:
+    needs: [build]
+    runs-on: ubuntu-latest
+    # if: (github.event_name == 'push' && github.ref == 'refs/heads/main')
+
+    steps:
+      - uses: actions/checkout@v4
+        name: Checkout Code
+
+      # Windows
+      - uses: actions/download-artifact@v4
+        name: Download Windows
+        with:
+          name: GitHub-Workflow-Deleter-windows-latest
+          path: release-artifacts/
+
+      - uses: actions/download-artifact@v4
+        name: Download Ubuntu
+        with:
+          name: GitHub-Workflow-Deleter-ubuntu-latest
+          path: release-artifacts/
+
+      - uses: actions/download-artifact@v4
+        name: Download Mac
+        with:
+          name: GitHub-Workflow-Deleter-macos-latest
+          path: release-artifacts/
+
+      - name: Create release
+        uses: ncipollo/release-action@v1.14.0
+        with:
+          replacesArtifacts: true
+          allowUpdates: true
+          artifactErrorsFailBuild: true
+          artifacts: "release-artifacts/*"
+          body: ${{ github.event.head_commit.message }}
+          prerelease: true
+          name: Nightly Release
+          tag: nightly-build
+
+      - name: Update nightly-build tag
+        run: |
+          git tag -f nightly-build
+          git push -f origin nightly-build
+        shell: bash
