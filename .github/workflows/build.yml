@@ -56,17 +56,26 @@ jobs:
           name: GitHub-Workflow-Deleter-windows-latest
           path: release-artifacts/
 
+      - name: Rename Windows Binary
+        run: mv release-artifacts/GitHub-Workflow-Deleter release-artifacts/GitHub-Workflow-Deleter-Windows
+
       - uses: actions/download-artifact@v4
-        name: Download Ubuntu
+        name: Download Linux
         with:
           name: GitHub-Workflow-Deleter-ubuntu-latest
           path: release-artifacts/
+
+      - name: Rename Linux Binary
+        run: mv release-artifacts/GitHub-Workflow-Deleter release-artifacts/GitHub-Workflow-Deleter-Ubuntu
 
       - uses: actions/download-artifact@v4
         name: Download Mac
         with:
           name: GitHub-Workflow-Deleter-macos-latest
           path: release-artifacts/
+          
+      - name: Rename Mac Binary
+        run: mv release-artifacts/GitHub-Workflow-Deleter release-artifacts/GitHub-Workflow-Deleter-Mac
 
       - name: Create release
         uses: ncipollo/release-action@v1.14.0
