@@ -73,7 +73,7 @@ jobs:
         with:
           name: GitHub-Workflow-Deleter-macos-latest
           path: release-artifacts/
-          
+
       - name: Rename Mac Binary
         run: mv release-artifacts/GitHub-Workflow-Deleter release-artifacts/GitHub-Workflow-Deleter-Mac
 
