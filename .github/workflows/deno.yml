@@ -1,4 +1,4 @@
-name: Deno Formatting
+name: Deno Formatting and Linting
 
 on:
   push:
@@ -7,8 +7,8 @@ on:
     branches: ["master", "main"]
 
 jobs:
-  check-format:
-    name: Check Format
+  format-and-lint:
+    name: Check Formatting and Linting
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
