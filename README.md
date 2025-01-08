@@ -1,1 +1,1 @@
-deno run --env -EN .\main.ts
+deno run --env -EN main.ts
