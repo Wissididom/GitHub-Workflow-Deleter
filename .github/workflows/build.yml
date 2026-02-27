@@ -30,13 +30,13 @@ jobs:
           deno compile -EN main.ts
       - name: Upload artifact (Windows)
         if: startsWith(matrix.os, 'windows')
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: GitHub-Workflow-Deleter-${{ matrix.os }}
           path: GitHub-Workflow-Deleter.exe
       - name: Upload artifact (Ubuntu and Mac)
         if: startsWith(matrix.os, 'ubuntu') || startsWith(matrix.os, 'macos')
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: GitHub-Workflow-Deleter-${{ matrix.os }}
           path: GitHub-Workflow-Deleter
