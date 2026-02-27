@@ -22,10 +22,7 @@ type WorkflowRun struct {
 }
 
 func main() {
-	err := godotenv.Load()
-	if err != nil {
-		log.Println("No .env file found")
-	}
+	_ = godotenv.Load()
 
 	owner := os.Getenv("OWNER")
 	repo := os.Getenv("REPO")
