@@ -106,5 +106,5 @@ func deleteWorkflowRun(ctx context.Context, client *http.Client, owner, repo, to
 func setHeaders(req *http.Request, token string) {
 	req.Header.Set("Accept", "application/vnd.github+json")
 	req.Header.Set("Authorization", "Bearer "+token)
-	req.Header.Set("X-GitHub-Api-Version", "2022-11-28")
+	req.Header.Set("X-GitHub-Api-Version", "2026-03-10")
 }
